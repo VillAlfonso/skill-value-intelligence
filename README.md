@@ -104,7 +104,7 @@ These limitations are documented intentionally and guide future improvements.
 ## Project Structure
 
 
-![alt text](image.png)
+<img width="325" height="213" alt="image" src="https://github.com/user-attachments/assets/961eae6f-83fc-4420-aa6f-f18db7706de3" />
 
 
 
