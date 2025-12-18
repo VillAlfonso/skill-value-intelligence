@@ -1,0 +1,6 @@
+job_id,title,company,location,description,salary_min,salary_max,date_posted,source
+1,Junior Data Analyst,ABC Corp,Manila,"We are looking for a Junior Data Analyst with skills in Python, SQL, and Excel. Experience with pandas is a plus.",30000,45000,2024-01-15,manual
+2,Data Scientist,XYZ Tech,Remote,"The role requires Python, machine learning, statistics, and experience with AWS. Familiarity with Docker is preferred.",80000,120000,2024-01-20,manual
+3,Backend Developer,StartupHub,Remote,"Seeking a backend developer with strong Python, Django, PostgreSQL, and cloud deployment experience on AWS.",70000,100000,2024-01-18,manual
+4,BI Analyst,Enterprise Inc,Quezon City,"Responsibilities include SQL reporting, dashboard creation, data visualization, and Excel-based analysis.",40000,60000,2024-01-10,manual
+5,Machine Learning Engineer,AI Labs,Remote,"Looking for an ML engineer skilled in Python, PyTorch, machine learning pipelines, Docker, and cloud infrastructure.",100000,150000,2024-01-22,manual
