@@ -2,130 +2,129 @@
 
 ## Overview
 
-This repository contains an applied data science system designed to
-analyze, quantify, and forecast the **economic value of technical skills**
-using publicly available labor market and ecosystem data.
+People invest significant time learning technical skills with limited visibility
+into their **economic value** or how that value changes over time.
+Common advice such as *“just trust the process”* often ignores a real risk:
+**skills can depreciate faster than individuals can reskill**.
 
-The goal of this project is **not to predict the future with certainty**,
-but to **reduce uncertainty** around skill investment decisions by
-translating observable market signals into interpretable, evidence-backed indicators.
+This project builds a **data-driven decision support system** that estimates the
+**relative economic value of technical skills** using publicly observable market signals.
 
-This system treats skills as economic assets whose value evolves over time
-based on demand, compensation, adoption, and decay.
-
----
-
-## Motivation
-
-Common advice such as *"just trust the process"* or *"invest in skills"* often
-fails to address a critical risk:
-
-> Skills can lose economic value faster than individuals can reskill.
-
-This project exists to replace vague guidance with **measurable signals** that help answer questions like:
-
-- Which skills are gaining or losing economic relevance?
-- How strongly is a skill associated with higher compensation?
-- Are certain tech stacks emerging or decaying?
-- What is the uncertainty around these signals?
+The goal is not to predict the future with certainty, but to **reduce uncertainty**
+around skill investment decisions.
 
 ---
 
-## What This System Does
+## Problem Statement
 
-This system:
-- Ingests **public, verifiable data** (job postings, salary data, developer activity)
-- Extracts and normalizes skill signals
-- Models **demand, compensation, momentum, and decay**
-- Produces interpretable indicators of **skill economic value**
-- Quantifies uncertainty and limitations explicitly
+Choosing which skills to learn has become increasingly risky due to:
+- rapid technological change
+- shifting labor market demand
+- misalignment between hype and compensation
+- lack of transparent, quantitative guidance
 
-This is a **decision-support system**, not a deterministic predictor.
-
----
-
-## What This System Does NOT Claim
-
-This system does **not**:
-- Guarantee future salaries
-- Claim access to private or insider data
-- Predict individual career outcomes
-- Replace human judgment
-
-All outputs are probabilistic, contextual, and subject to revision as new data arrives.
+This system treats skills as **economic assets** whose value can be approximated
+using market-derived signals rather than intuition or trend-following.
 
 ---
 
-## Data Sources (Initial Scope)
+## What This Project Does
 
-Planned public data sources include:
-- Job posting aggregators (skill demand)
-- Salary aggregators (compensation signals)
-- Open-source ecosystem data (GitHub activity)
-- Longitudinal trend datasets
+This repository implements a modular data science pipeline that:
 
-Each data source is treated as **partial and biased**, and is weighted accordingly.
+1. **Ingests job market data**  
+   Structured job postings containing role descriptions and salary ranges.
 
----
+2. **Extracts technical skills**  
+   Skills are identified from job descriptions using explainable text matching
+   as a baseline approach.
 
-## Core Signals Modeled
+3. **Computes market signals**
+   - **Demand Signal**: frequency of skill mentions in job postings
+   - **Compensation Signal**: average salary midpoint associated with roles
+     mentioning the skill
 
-For each skill or skill combination, the system models:
+4. **Builds a Skill Value Index (SVI)**  
+   A normalized composite score combining demand and compensation to estimate
+   the **relative economic attractiveness** of skills.
 
-- **Demand Signal**  
-  Frequency and growth of skill mentions in job postings.
-
-- **Compensation Signal**  
-  Correlation between skill presence and salary premiums.
-
-- **Momentum Signal**  
-  Rate of acceleration or deceleration in adoption.
-
-- **Decay Signal**  
-  Evidence of declining relevance or replacement.
-
-These signals are combined into an interpretable **Skill Value Index**, with confidence intervals.
+The output is a ranked list of skills based on current observable market signals.
 
 ---
 
-## Methodology & Rigor
+## Skill Value Index (SVI)
 
-This project follows standard data science principles:
-- Explicit assumptions
-- Transparent feature construction
-- Historical backtesting where possible
-- Clear separation between observation and inference
-- Documentation of failure modes
+The Skill Value Index combines two normalized components:
 
-For details, see:
-- `docs/methodology.md`
-- `docs/assumptions-and-limitations.md`
+- **Demand** (posting frequency)
+- **Compensation** (salary midpoint)
+
+Each signal is normalized using min–max scaling and combined with equal weighting:
+
+SVI = 0.5 × Demand_norm + 0.5 × Compensation_norm
+
+
+
+This design prioritizes:
+- interpretability
+- transparency
+- defensible assumptions
+- ease of adjustment as the system evolves
+
+---
+
+## How to Interpret Results
+
+- The Skill Value Index is **relative**, not absolute
+- Rankings compare skills *within the dataset*, not across all markets
+- High SVI skills are both **widely requested and better compensated**
+- Low SVI skills may be:
+  - common but low-paying
+  - niche and high-paying
+  - emerging but underrepresented
+
+This system supports **decision-making**, not guarantees.
+
+---
+
+## Limitations and Assumptions
+
+This project explicitly acknowledges its constraints:
+
+- Small, manually seeded dataset (early-stage validation)
+- Job postings reflect employer intent, not confirmed hires
+- Salary ranges may be noisy or inflated
+- Skill mentions may correlate with seniority or role type
+- Correlation does not imply causation
+
+These limitations are documented intentionally and guide future improvements.
+
+---
+
+## Project Structure
+
+
+![alt text](image.png)
+
+
 
 ---
 
 ## Intended Use
 
-This system is intended for:
-- Individuals evaluating skill investments
-- Analysts studying labor market dynamics
-- Educators and curriculum designers
-- Researchers exploring human capital economics
+This project is intended for:
+- individuals evaluating skill investment decisions
+- analysts studying labor market dynamics
+- educators and curriculum designers
+- exploratory research into human capital economics
 
-It is not intended for high-frequency trading, hiring automation, or individual evaluation.
-
----
-
-## Project Status
-
-This is an **active research and development project**.
-Initial versions focus on correctness, interpretability, and robustness over scale.
+It is not intended for automated hiring, individual evaluation,
+or deterministic career prediction.
 
 ---
 
-## Author’s Note
+## Status
 
-This project was built to reflect how data science is practiced in real-world,
-high-uncertainty environments: with incomplete data, imperfect proxies,
-and careful reasoning.
-
-Accuracy is treated as a process, not a claim.
+This is an **active, iterative research project**.
+Accuracy is treated as a process rather than a claim,
+with emphasis on transparency and signal validity.
